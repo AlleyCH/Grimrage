@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Background
+  - Water
+  - UI
+  - Ground
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 2270532983
+    locked: 0
+  - name: 'Mountains '
+    uniqueID: 2612030139
+    locked: 0
+  - name: Graveyard
+    uniqueID: 2343469701
+    locked: 0
+  - name: Trees
+    uniqueID: 590721307
+    locked: 0
+  - name: Player
+    uniqueID: 285990769
+    locked: 0
+  - name: Ground
+    uniqueID: 614947737
+    locked: 0
+  - name: Front Trees
+    uniqueID: 3436452937
+    locked: 0
