@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - DeathTriggers
   layers:
   - Default
   - TransparentFX
@@ -61,4 +62,7 @@ TagManager:
     locked: 0
   - name: Front Trees
     uniqueID: 3436452937
+    locked: 0
+  - name: Key
+    uniqueID: 3956831423
     locked: 0

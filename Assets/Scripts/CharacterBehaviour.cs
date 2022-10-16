@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterBehaviour : MonoBehaviour
 {
@@ -12,11 +13,22 @@ public class CharacterBehaviour : MonoBehaviour
     private bool isGrounded = true;
     [SerializeField]
     private GameObject flashlight;
+    public Animator anim;
+    public Transform playerSpawnPoint;
+    public GameObject player;
+    public AudioSource jumping;
+    public AudioSource deathSound;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>(); 
         rb = GetComponent<Rigidbody2D>();
+        jumping = GetComponent<AudioSource>();
+        deathSound = GetComponent<AudioSource>();
+        
     }
 
     // Update is called once per frame
@@ -44,14 +56,47 @@ public class CharacterBehaviour : MonoBehaviour
     {
         if (isGrounded && Input.GetAxis("Jump")>0)
         {
+            jumping.Play();
+            anim.SetBool("isJumping", true);
             rb.AddForce(new Vector2(0f, 2f), ForceMode2D.Impulse);
             isGrounded = false;
         }
+        else
+        {
+            anim.SetBool("isJumping", false);
+        }
     }
-
+ 
     private bool GroundCheck() {
 
         return Physics2D.OverlapCircle(groundCheckPos.position, groundCheckRadius, whatIsGround);
         
+    }
+
+
+    public IEnumerator WaitForSceneLoad()
+    {
+
+        yield return new WaitForSeconds(0.5f);
+        Scene currentScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currentScene.name);
+
+    }
+
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("DeathTriggers"))
+        {
+            deathSound.Play();
+            anim.SetBool("isDead", true);
+            StartCoroutine(WaitForSceneLoad());
+
+            //player.transform.position = playerSpawnPoint.position;
+        }
+        else 
+        {
+            anim.SetBool("isDead", false);
+            
+        }
     }
 }

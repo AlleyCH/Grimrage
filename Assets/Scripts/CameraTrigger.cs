@@ -14,6 +14,7 @@ public class CameraTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             vCamController.TransitionTo(cameraToActivate);
+          
         }
     }
 
